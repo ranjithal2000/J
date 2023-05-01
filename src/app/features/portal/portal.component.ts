@@ -1121,9 +1121,9 @@ editdropdownfrontend:any=[];
           this.Dataset=this.linkagedata.datasets;
           this.Frontend=this.linkagedata.frontends;
 
-  //  if(this.Solution.length==1){
-  //   this.updateArrows(data);
-  // }
+   if(this.Solution.length==1){
+    this.updateArrows(data);
+  }
       }
     )
   }
