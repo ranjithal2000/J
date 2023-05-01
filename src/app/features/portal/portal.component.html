@@ -42,7 +42,8 @@
         <!-- </table> -->
         <tr class="input-group pt-3 pb-3">
         <!-- <div >  -->
-          <input class="form-control py-2 border-right-0 border" style="max-width:14vw; height:50px;background-color: transparent;" [(ngModel)]="Searchvalue4" type="search" placeholder="search" id="example-search-input"> 
+          <input class="form-control py-2 border-right-0 border" style="max-width:14vw; height:50px;background-color: transparent;" 
+          [(ngModel)]="Searchvalue4" type="search" placeholder="search" id="example-search-input" (keyup)="filterSolution()"> 
           <span class="input-group-append"> <div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div></span>
         <!-- </div> -->
       </tr>
@@ -50,7 +51,7 @@
         <!-- <div   >  -->
         <mat-accordion class="mb-2 py-0"> 
         <table>
-          <tr *ngFor="let data of Solution|filter:Searchvalue4:Searchdata4||Searchdata5 ;let i=index" >   
+          <tr *ngFor="let data of Solution ;let i=index" >   
             <td>
             <mat-expansion-panel style="background-color: #7672ED;" (opened)="panelOpenState = true" (closed)="panelOpenState = false" [expanded]="isPanelOpen"
               class="py-0 my-0"> <mat-expansion-panel-header > <mat-panel-title>
@@ -130,7 +131,8 @@
       </table>
       <!-- <div class="input-group pb-3 pt-3">  -->
         <tr class="input-group pb-3 pt-3">
-          <input class="form-control py-2 border-right-0 border" style="max-width:14vw; height:50px;background-color: transparent;" type="search" [(ngModel)]="Searchvalue3" placeholder="search" id="example-search-input">
+          <input class="form-control py-2 border-right-0 border" style="max-width:14vw; height:50px;background-color: transparent;" type="search" 
+          [(ngModel)]="Searchvalue3" placeholder="search" id="example-search-input" (keyup)="filterFrontend()">
            <span class="input-group-append">
           <div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div>
         </span>
@@ -140,7 +142,7 @@
       <!-- <div class="mt-2 ">  -->
         <mat-accordion class="mb-2 py-0"> 
           <table >
-            <tr *ngFor="let data of Frontend|filter:Searchvalue3:Searchdata3 ;let i=index" >
+            <tr *ngFor="let data of Frontend ;let i=index" >
               <td>
           <mat-expansion-panel style="background-color: #7672ED;" (opened)="panelOpenState = true" (closed)="panelOpenState = false"class="py-0 my-0">
              <mat-expansion-panel-header > 
@@ -214,14 +216,15 @@
       </table>
 
       <tr class="input-group pb-3 pt-3"> 
-        <input class="form-control py-2 border-right-0 border" style="max-width:14vw; height:50px;background-color: transparent;" type="search" [(ngModel)]="Searchvalue2" placeholder="search" id="example-search-input"> 
+        <input class="form-control py-2 border-right-0 border" style="max-width:14vw; height:50px;background-color: transparent;" type="search" 
+        [(ngModel)]="Searchvalue2"  placeholder="search" id="example-search-input" (keyup)="filterPipeline()"> 
           <span class="input-group-append"><div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div> </span> 
       </tr>
       
       
       <mat-accordion class="mb-2 py-0"> 
           <table >
-          <tr *ngFor="let data of pipeline|filter:Searchvalue2:Searchdata2 ;let i=index" >
+          <tr *ngFor="let data of pipeline ;let i=index" >
             <td>
               <mat-expansion-panel
               style="background-color: #7672ED;" (opened)="panelOpenState = true" (closed)="panelOpenState = false"
@@ -285,13 +288,14 @@
       </table>
 
       <tr class="input-group pb-3 pt-3" > 
-        <input class="form-control py-2 border-right-0 border" style="max-width:14vw; height:50px;background-color: transparent;" type="search" [(ngModel)]="Searchvalue1" placeholder="search" id="example-search-input"> 
+        <input class="form-control py-2 border-right-0 border" style="max-width:14vw; height:50px;background-color: transparent;" type="search" 
+        [(ngModel)]="Searchvalue1" placeholder="search" id="example-search-input" (keyup)="filterModel()"> 
           <span class="input-group-append"> <div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div> </span> 
       </tr>
 
       <mat-accordion class="mb-2 py-0"> 
         <table >
-      <tr *ngFor="let data of Modules|filter:Searchvalue1:Searchdata1 ;let i=index" class="mt-2 "> 
+      <tr *ngFor="let data of Modules ;let i=index" class="mt-2 "> 
         <td>
           <mat-expansion-panel style="background-color: #7672ED;" (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="py-0 my-0"> 
             <mat-expansion-panel-header > 
@@ -363,13 +367,14 @@
       </table>
 
       <tr class="input-group pb-3 pt-3"> 
-        <input class="form-control py-2 border-right-0 border" style="max-width:14vw; height:50px;background-color: transparent;" [(ngModel)]="Searchvalue" type="search" placeholder="search" id="example-search-input"> 
+        <input class="form-control py-2 border-right-0 border" style="max-width:14vw; height:50px;background-color: transparent;" 
+        [(ngModel)]="Searchvalue" type="search" placeholder="search" id="example-search-input"  (keyup)="filterData()"> 
           <span class="input-group-append"> <div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div></span>
       </tr>
 
       <mat-accordion class="mb-2 py-0"> 
         <table>
-      <tr *ngFor="let data of Dataset|filter:Searchvalue:Searchdata ;let i=index" class="mt-2">
+      <tr *ngFor="let data of Dataset ;let i=index" class="mt-2">
         <td>
           <mat-expansion-panel style="background-color: #7672ED;" (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="py-0 my-0">
             <mat-expansion-panel-header > 

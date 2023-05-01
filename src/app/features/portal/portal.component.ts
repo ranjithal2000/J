@@ -45,6 +45,7 @@ export class PortalComponent implements OnInit {
   Engin: any = [];
   Frontend: any = [];
   Solution: any = [];
+  
   Searchvalue: string = '';
   Searchdata: string = 'datasetName';
   Searchvalue1: string = '';
@@ -81,6 +82,7 @@ export class PortalComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    
     // this.fetchData();
     this.getModel();
     this.getSolution();
@@ -88,7 +90,7 @@ export class PortalComponent implements OnInit {
     this.getPipeline();
     this.getFrontend();
 
-
+    
     //--------------------------------------------------------------------------------------------------------------------------------
 
     // window.onload = () => {
@@ -167,6 +169,7 @@ export class PortalComponent implements OnInit {
     
         //--------------------------------------------------------------------------------------------------------------------------------
   }
+  
   arrowLink2:any;
   arrowLink3:any;
   arrowLink4:any;
@@ -185,7 +188,82 @@ export class PortalComponent implements OnInit {
   rows3:any;
   rows4:any;
   rows5:any;
+  searchResponse:any;
+  filterSolution() {
+    let search = this.Searchvalue4;
+    let table =  "Solutions"; 
+    let col1=  "solutionName";
+    let col2 = "solutionTags";
+    this.http.post('http://3.111.229.37:3000/search', { search, table, col1, col2})
+      .subscribe(response => {  
+        this.searchResponse=response;
+        this.Solution = this.searchResponse.data;
+        console.log("search Response",this.searchResponse.data)
+      }
+      )
+     
+    
+  
+  }
 
+  filterFrontend() {
+    let search = this.Searchvalue3;
+    let table =  "Frontends"; 
+    let col1=  "frontendName";
+    this.http.post('http://3.111.229.37:3000/search', { search, table, col1})
+      .subscribe(response => {  
+        this.searchResponse=response;
+        this.Frontend = this.searchResponse.data;
+        console.log("search Response",this.searchResponse.data)
+      }
+      )
+     
+    
+  
+  }
+
+  filterPipeline() {
+    let search = this.Searchvalue2;
+    let table =  "Pipelines"; 
+    let col1=  "pipelineName";
+    let col2 = "pipelineTags";
+    this.http.post('http://3.111.229.37:3000/search', { search, table, col1, col2})
+      .subscribe(response => {  
+        this.searchResponse=response;
+        this.pipeline = this.searchResponse.data;
+        console.log("search Response",this.searchResponse.data)
+      }
+      )
+  }
+
+  filterModel() {
+    let search = this.Searchvalue1;
+    let table =  "Models"; 
+    let col1=  "modelName";
+    let col2 = "modelTags";
+    this.http.post('http://3.111.229.37:3000/search', { search, table, col1, col2})
+      .subscribe(response => {  
+        this.searchResponse=response;
+        this.Modules = this.searchResponse.data;
+        console.log("search ResponseModel",this.searchResponse.data)
+      }
+      )
+  }
+
+
+  filterData() {
+    let search = this.Searchvalue;
+    let table =  "Data"; 
+    let col1=  "datasetName";
+   
+    this.http.post('http://3.111.229.37:3000/search', { search, table, col1})
+      .subscribe(response => {  
+        this.searchResponse=response;
+        this.Dataset = this.searchResponse.data;
+        console.log("search ResponseData",this.searchResponse.data)
+      }
+      )
+  }
 
   refresh(){
     debugger
